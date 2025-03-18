@@ -3,7 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-API_ENDPOINT = "https://apiJ.dicionario-aberto.net/word/"
+# Corrigir o endpoint da API
+API_ENDPOINT = "https://api.dicionario-aberto.net/word/"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
