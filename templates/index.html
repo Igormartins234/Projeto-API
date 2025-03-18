@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionário Aberto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="container mt-5">
+    <h1 class="text-center">Dicionário Aberto</h1>
+    
+    <form method="POST" class="mt-4">
+        <div class="mb-3">
+            <label for="palavra" class="form-label">Digite uma palavra:</label>
+            <input type="text" id="palavra" name="palavra" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    
+    {% if error %}
+        <div class="alert alert-danger mt-3">{{ error }}</div>
+    {% endif %}
+
+    {% if palavra and dados %}
+        <div class="mt-4">
+            <h2>Resultado para: <strong>{{ palavra }}</strong></h2>
+            <ul class="list-group">
+                {% for item in dados %}
+                    <li class="list-group-item">{{ item.xml | safe }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+   
+</body>
+</html>
